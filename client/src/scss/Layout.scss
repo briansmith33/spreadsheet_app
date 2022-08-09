@@ -1,0 +1,18 @@
+body {
+    background-color: #3c3c3c;
+    font-family: 'Lato';
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@for $i from 1 through 12 {
+	.col-#{$i} {
+		flex: 0 0 calc((#{$i}/12)*100%);
+		max-width: calc((#{$i}/12)*100%);
+	}
+}
+  

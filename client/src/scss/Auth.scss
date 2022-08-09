@@ -1,0 +1,87 @@
+#signin-page {
+    form {
+        position: absolute;
+        height: 60vh;
+        width: 30vw;
+        top: 15vh;
+        left: 35vw;
+        border: 1px solid #f5f5f5;
+        padding: 3rem;
+        border-radius: 1rem;
+        input[type='email'],
+        input[type='password'] {
+            width: calc(100% - 1.5rem);
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+            &:focus {
+                outline: 2px solid $theme-color;
+            }
+        }
+        button {
+            width: calc(100% + 0.75rem);
+            background-color: $theme-color;
+            color: #f5f5f5;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            &:hover {
+                background-color: lighten($theme-color, 5%);
+            }
+        }
+    }
+}
+
+#signup-page {
+    form {
+        position: absolute;
+        height: 60vh;
+        width: 30vw;
+        top: 15vh;
+        left: 35vw;
+        border: 1px solid #f5f5f5;
+        padding: 3rem;
+        border-radius: 1rem;
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            width: calc(100% - 1.5rem);
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+            &:focus {
+                outline: 2px solid $theme-color;
+            }
+        }
+        select {
+            width: calc(100% + 0.75rem);
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+            color: #666666;
+            &:focus {
+                outline: 2px solid $theme-color;
+            }
+        }
+        button {
+            width: calc(100% + 0.75rem);
+            background-color: $theme-color;
+            color: #f5f5f5;
+            border: none;
+            border-radius: 0.25rem;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            &:hover {
+                background-color: lighten($theme-color, 5%);
+            }
+        }
+    }
+}
