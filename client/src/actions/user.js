@@ -23,7 +23,7 @@ export const loadUser = () => async (dispatch) => {
 			dispatch(setAlert(res.data.substring(6), 'failure'));
 			dispatch({type: USER_ERROR, payload: res.data.substring(6)});
 		}else{
-			dispatch({type: USER_LOADED,payload: res.data});
+			dispatch({type: USER_LOADED, payload: res.data});
 		}
 		
 	} catch (err) {
@@ -136,7 +136,7 @@ export const changeDisplaySettings = (formData) => async (dispatch) => {
 };
 
 // saveTable ...
-export const saveTable = (table) => async (dispatch) => {
+export const saveTable = (tableData) => async (dispatch) => {
 	try {
 		const config = {
 			headers: {
@@ -144,7 +144,7 @@ export const saveTable = (table) => async (dispatch) => {
 			},
 		};
 	
-		const res = await axios.put('/api/user/save', table, config);
+		const res = await axios.post('/api/user/save-table', tableData, config);
 		if (res.data === 'AUTH_ERROR') {
 			dispatch({type: AUTH_ERROR });
 			dispatch({ type: LOGOUT });

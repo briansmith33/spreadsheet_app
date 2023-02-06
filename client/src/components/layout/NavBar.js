@@ -17,28 +17,29 @@ const Navbar = ({
 }) => { 
 
     useEffect(() => {
-        const signinLink = document.querySelector('.signin-link');
-        const signupLink = document.querySelector('.signup-link');
-        if (page === 'signin') {
-            signinLink.classList.add('hide');
-            signupLink.classList.add('onpage');
-            signupLink.textContent = 'Create a free account';
-        } else {
-            signinLink.classList.remove('hide');
-            signupLink.classList.remove('onpage');
-            signupLink.textContent = 'Get started for free';
-        }
-
-        if (page === 'signup') {
-            signupLink.classList.add('hide');
-            signinLink.classList.add('onpage');
-        } else {
-            signupLink.classList.remove('hide');
-            signinLink.classList.remove('onpage');
+        if (!isAuthenticated) {
+            const signinLink = document.querySelector('.signin-link');
+            const signupLink = document.querySelector('.signup-link');
+            if (page === 'signin') {
+                signinLink.classList.add('hide');
+                signupLink.classList.add('onpage');
+                signupLink.textContent = 'Create a free account';
+            } else {
+                signinLink.classList.remove('hide');
+                signupLink.classList.remove('onpage');
+                signupLink.textContent = 'Get started for free';
+            }
+    
+            if (page === 'signup') {
+                signupLink.classList.add('hide');
+                signinLink.classList.add('onpage');
+            } else {
+                signupLink.classList.remove('hide');
+                signinLink.classList.remove('onpage');
+            }
         }
         
-    
-    }, [page])
+    }, [page, isAuthenticated])
 
 	return (
 		<Fragment>
@@ -47,8 +48,17 @@ const Navbar = ({
                     <NavLink to='/' onClick={() => goTo('home')} className='nav-link'>Home</NavLink>
                     <NavLink to='/editor' onClick={() => goTo('editor')} className='nav-link'>Editor</NavLink>
                 </div>
-                <Link to='/signin' onClick={() => goTo('signin')} className='signin-link'>Sign In</Link>
-                <Link to='/signup' onClick={() => goTo('signup')} className='signup-link'>Get started for free</Link>
+                {isAuthenticated ? (
+                    <Fragment>
+                        <button className='logout-btn' onClick={() => logout()}>Logout</button>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <Link to='/signin' onClick={() => goTo('signin')} className='signin-link'>Sign In</Link>
+                        <Link to='/signup' onClick={() => goTo('signup')} className='signup-link'>Get started for free</Link>
+                    </Fragment>
+                )}
+                
             </nav>
 		</Fragment>
 	);

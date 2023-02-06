@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
 import { signUpUser } from '../../actions/auth';
+import { Navigate } from 'react-router-dom';
 
 
 const SignUp = ({ isAuthenticated, user: { loading }, auth, signUpUser  }) => {
@@ -37,6 +38,8 @@ const SignUp = ({ isAuthenticated, user: { loading }, auth, signUpUser  }) => {
     const onChange = (e) => setFormData({...formData, [e.target.name]: e.target.value});
 
     const roles = ['Student', 'Employee', 'Personal'];
+
+    if (isAuthenticated) return <Navigate to='/editor' />;
 
 	return auth.loading ? (
 		<Spinner loadFunctions={[]} />
